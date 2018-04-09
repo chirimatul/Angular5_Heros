@@ -1,0 +1,27 @@
+<!-- <div class="row col-md-4 offset-md-4" style="width:400px" *ngFor="let hero of Heros">
+  <Div class="row badge badge-primary" style="width:400px">
+    <span >{{hero.id}}</span><span style="margin-left: 100px" >{{hero.name}}</span>
+  </Div>
+</div> -->
+<div class="container mt-3">
+  <div class="row">
+    <div class="card text-white bg-info  mb-3 mr-3" *ngFor="let hero of Heros">
+      <div class="card-header">
+        <label style="float:left">{{ hero.id}} : {{hero.name}}</label>      
+        <label style="float:right" routerLink="/hero/{{hero.id}}">edit</label>      
+        <div style="font-size:19px; color:red; float:right; cursor:pointer" (click)="removeHero(hero.id)">X</div>
+      </div>
+      <div class="card-body">
+        <p class="card-text">{{hero.description}}</p>
+        <p class="card-text" *ngIf="hero.canFly; then templateCanFlay else templateCantFlay">I can fly</p>
+        <ng-template #templateCanFlay>
+            <img src="..\..\assets\heroFly.gif" style="height:50px; width:50px;"/>
+            <p class="card-text">I can fly</p>
+        </ng-template>
+        <ng-template #templateCantFlay>
+          <p class="card-text">I can't fly</p>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>
