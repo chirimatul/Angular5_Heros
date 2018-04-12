@@ -7,20 +7,27 @@ import { AppRoutingModule } from './/app-routing.module';
 import { DashboadComponent } from './dashboad/dashboad.component';
 import { HerosComponent } from './heros/heros.component';
 import { HeroService } from './servies/hero.service';
+import { TreeModule } from './tree/tree.module';
+import { CustomDirective } from './cDirective/custom.directive';
+import { OtherModule } from './other/other.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboadComponent,
-    HerosComponent
+    HerosComponent,
+    CustomDirective
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    TreeModule,
+    OtherModule
   ],
+  exports: [DashboadComponent],
   providers: [HeroService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent]  
 })
 export class AppModule { }

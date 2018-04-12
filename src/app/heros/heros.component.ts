@@ -11,11 +11,15 @@ import {  ActivatedRoute } from '@angular/router'
 export class HerosComponent implements OnInit {
 
   hero:Hero;
-  constructor(private heroService:HeroService, private route:ActivatedRoute) {
+  constructor(private heroService:HeroService, private activeRoute:ActivatedRoute) {
     debugger;
-    var id:number;
-    this.route.params.subscribe( params => id=params.id );
-
+    let id:number;
+    this.activeRoute.params.subscribe( params => id=params.id ); // way 1
+    id = +this.activeRoute.snapshot.paramMap.get('id'); // way
+    //this.route.snapshot.params.get("id"); ?
+    //id=+"90";
+    
+    let str:string;
     if(id > 0){
       this.hero = heroService.GetHero(Number(id));
       if(this.hero == null) this.hero = new Hero();
