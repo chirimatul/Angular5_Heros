@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: 'hero', component: HerosComponent },
   { path: 'hero/:id', component: HerosComponent },
 ];
-
+  
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [    RouterModule  ]

@@ -11,6 +11,7 @@ import {  ActivatedRoute } from '@angular/router'
 export class HerosComponent implements OnInit {
 
   hero:Hero;
+  test:number=60;
   constructor(private heroService:HeroService, private activeRoute:ActivatedRoute) {
     debugger;
     let id:number;

@@ -7,21 +7,22 @@
   <div class="row">
     <div class="card text-white bg-info  mb-3 mr-3" *ngFor="let hero of Heros">
       <div class="card-header">
-        <label style="float:left">{{ hero.id}} : {{hero.name}}</label>      
-        <label style="float:right" routerLink="/hero/{{hero.id}}">edit</label>      
+        <label style="float:left">{{ hero.id}} : {{hero.name}}</label>
+        <label style="float:right" routerLink="/hero/{{hero.id}}">edit</label>
         <div style="font-size:19px; color:red; float:right; cursor:pointer" (click)="removeHero(hero.id)">X</div>
       </div>
-      <div class="card-body">
+      <div class="card-body" [ngClass]="{'FlyingHero': hero.canFly}">
         <p class="card-text">{{hero.description}}</p>
         <p class="card-text" *ngIf="hero.canFly; then templateCanFlay else templateCantFlay">I can fly</p>
         <ng-template #templateCanFlay>
-            <img src="..\..\assets\heroFly.gif" style="height:50px; width:50px;"/>
-            <p class="card-text">I can fly</p>
+          <img src="..\..\assets\heroFly.gif" style="height:50px; width:50px;" />
+          <p class="card-text">I can fly</p>
         </ng-template>
         <ng-template #templateCantFlay>
-          <p class="card-text">I can't fly</p>
+          <p class="card-text" [ngClass]="{'NotFlyingHero':!hero.canFly}">I can't fly</p>
         </ng-template>
       </div>
+      <app-child-component [hero]=hero (informParent)="calledFromChild($event)"></app-child-component>
     </div>
   </div>
 </div>
